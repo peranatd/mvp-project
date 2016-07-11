@@ -17,7 +17,8 @@ angular.module('sudoku-state', [])
       for (var cell of row) {
         newRow.push({
           value: cell?cell:'',
-          mutable: (cell===0)?true:false
+          mutable: (cell===0)?true:false,
+          valid: true,
         })
       }
       cookedBoard.push(newRow);

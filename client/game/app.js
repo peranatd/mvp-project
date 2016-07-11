@@ -11,5 +11,17 @@ angular.module('sudoku', [
     $scope.state.board = $scope.state.initBoard($scope.logic.solve($scope.state.origBoard));
   }
 
+  $scope.reset = function() {
+    // $scope.state.origBoard = $scope.state.getNewBoard();
+    $scope.state.board = $scope.state.initBoard($scope.state.origBoard);
+  }
+
+  $scope.checkSol = function() {
+    window.alert(
+      ($scope.logic.checkValid($scope.state.makeRaw($scope.state.board))) ?
+      "Well done!" : "Try again"
+    );
+  }
+
 
 });
