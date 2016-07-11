@@ -17,8 +17,9 @@ angular.module('sudoku', [
   }
 
   $scope.checkSol = function() {
+    console.log($scope.logic.checkValid($scope.state.board.map(row => row.map(cell => +cell.value))));
     window.alert(
-      ($scope.logic.checkValid($scope.state.makeRaw($scope.state.board))) ?
+      ($scope.logic.checkValid($scope.state.board.map(row => row.map(cell => +cell.value)))) ?
       "Well done!" : "Try again"
     );
   }

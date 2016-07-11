@@ -11,10 +11,10 @@
 <div class="board" id="container">
   <div ng-repeat="row in state.board track by $index">
     <ul class="row" ng-mouseover="setRow($index)">
-      <li ng-repeat="char in row track by $index" ><input ng-mouseover="setCol($index)" ng-model="char.value" ng-disabled="!char.mutable"></input></li>
+      <li ng-repeat="char in row track by $index">
+        <input ng-mouseover="setCol($index)" ng-model="char.value" ng-disabled="!char.mutable" ng-style="style"></input></li>
     </ul>
   </div>
 </div>
-<p>{{state.logic.makeRaw(state.board)}}</p>
 <p>{{state.origBoard}}</p>
 <p>{{state.board}}</p>
