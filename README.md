@@ -1,4 +1,4 @@
-# Simple sudoku #
+# Simple Sudoku #
 
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -20,25 +20,25 @@ Once the project moves into development, the press release can be used as a touc
   > A simple sudoku app featuring a puzzle generator, solver, and assist mode.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > This is an app for everyone.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Simple Sudoku is a free alternative to expensive puzzle books for everyone!
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Tired of spending money on sudoku puzzle books?
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > This app will provide countless hours of entertainment for sudoku fans, for free!
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "We've devoted over 30 hours carefully crafting out the perfect sudoku app for sudoku lovers."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Just load up the page and start having fun.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "This is a great app, use it!" - anon
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Why are you still here? Go have some fun!
