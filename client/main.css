@@ -37,6 +37,10 @@
   cursor: default;
 }
 
+.invalid {
+  background-color: #F27076;
+}
+
 input:focus {
   outline: none;
   background-color: #D1EBF8;

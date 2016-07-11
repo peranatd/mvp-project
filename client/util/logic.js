@@ -46,6 +46,20 @@ angular.module('sudoku-logic', [])
     return result;
   }
 
+  var invalidPos = function(cell, board) {
+    var a = cell.value;
+    var i = cell.row;
+    var j = cell.col;
+    board[i][j] = 0;
+    if (allowedNum(i, j, board).indexOf(+a) === -1 && a !== '' && cell.mutable) {
+      board[i][j] = a;
+      return true;
+    } else {
+      board[i][j] = a;
+      return false;
+    }
+  }
+
   var checkValid = function(board) {
   for (var i = 0; i < board.length; i++) {
     for (var j = 0; j < board.length; j++) {
@@ -82,14 +96,10 @@ var solve = function(board) {
   return solution.length ? solution : false;
 }
 
-  var test = function(value) {
-    console.log(value);
-  }
-
   return {
     solve: solve,
     checkValid: checkValid,
     allowedNum: allowedNum,
-    test: test
+    invalidPos: invalidPos
   }
 });
