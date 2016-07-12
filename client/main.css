@@ -105,13 +105,16 @@ input:focus {
 }
 
 .btn {
+  font-size: 16px;
   border-radius: 5px;
   color: #226699;
+  background: white;
   cursor: pointer;
   display: inline-block;
   font-weight: 200;
   letter-spacing: .5px;
   margin: 10px 29px 10px 29px;
+  outline: none;
 }
 
 .btn-alt {
@@ -122,4 +125,9 @@ input:focus {
 .btn-alt:hover {
   background: #226699;
   color: #fff;
+}
+
+.btn:disabled {
+  background: #8B8B8B;
+  cursor: progress;
 }

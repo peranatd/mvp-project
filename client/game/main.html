@@ -1,10 +1,10 @@
 <div id="content" ng-controller="GameController">
 <h1>Simple Sudoku</h1>
 <div class="buttons">
-  <a class="btn btn-alt" ng-click="getNew()">new</a>
-  <a class="btn btn-alt" ng-click="reset()">reset</a>
-  <a class="btn btn-alt" ng-click="getSol()">solve</a>
-  <a class="btn btn-alt" ng-click="checkSol()">check</a>
+  <button class="btn btn-alt" ng-click="getNew()" ng-disabled="disable">new</button>
+  <button class="btn btn-alt" ng-click="reset()">reset</button>
+  <button class="btn btn-alt" ng-click="getSol()">solve</button>
+  <button class="btn btn-alt" ng-click="checkSol()">check</button>
 </div>
 <br>
 <!-- <form ng-submit="state.set(row, col, enter); enter=''">

@@ -28,16 +28,21 @@ angular.module('sudoku', [
   };
 
   $scope.getNew = function() {
-    return $http({
-      method: 'GET',
-      url: '/new'
-    })
-    .then(function(response) {
-      $scope.state.origBoard = response.data;
-      $scope.reset();
-      console.log(JSON.stringify(response.data));
-    });
+    if (!$scope.disable) {
+      $scope.disable = true;
+      return $http({
+        method: 'GET',
+        url: '/new'
+      })
+      .then(function(response) {
+        $scope.state.origBoard = response.data;
+        $scope.reset();
+        $scope.disable = false;
+        // console.log(JSON.stringify(response.data));
+      });
+    }
   };
 
+  $scope.disable = false;
 
 });
