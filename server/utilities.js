@@ -1,15 +1,58 @@
-var makeNewBoard = function() {
+function makeNewBoard(clues) {
+  // very inefficient...
   var board = [[0,0,0,0,0,0,0,0,0],
-               [6,0,0,1,9,5,0,0,0],
-               [0,9,8,0,0,0,0,6,0],
-               [8,5,0,0,6,0,0,0,3],
-               [4,0,0,8,0,3,0,0,1],
-               [7,0,0,0,2,0,0,0,6],
-               [0,6,0,0,0,0,2,8,0],
-               [0,0,0,4,1,9,0,0,5],
-               [0,0,0,0,8,0,0,7,9]];
-  return board;
-};
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0]];
+
+  // make an array of all coords
+  var pos = [];
+  for (var i = 0; i < 9; i++) {
+    for (var j = 0; j< 9; j++) {
+      pos.push([i, j]);
+    }
+  }
+  var count = 0;
+
+  // place the appropriate number of clues
+  while (count < clues) {
+    [i, j] = pos.splice(random(pos.length), 1)[0];
+    var allowed = allowedNum(i, j, board);
+    if (allowed.length) {
+      board[i][j] = allowed[random(allowed.length)];
+      count++;
+    } else {
+      // if the coord does not have any allowed num
+      // board has no solution, break
+      var flag = 1;
+      break;
+    }
+  }
+
+  if (!flag) {
+  // all clues placed, attempt to solve the board, return if solvable
+    if (solve(board)) {
+      return board;
+    } else {
+      console.log('Failed solve');
+      return makeNewBoard(clues);
+    }
+  } else {
+  // clue placement failed - redo
+    console.log('Failed placement');
+    return makeNewBoard(clues);
+  }
+}
+
+function random(n) {
+  // returns an integer in [0,n)
+  return Math.floor(Math.random()*n);
+}
 
 function getCol(y, board) {
   return board.map(x => x[y]);

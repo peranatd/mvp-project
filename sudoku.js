@@ -18,6 +18,56 @@
                [0,0,0,0,8,0,0,7,9]];
  */
 
+function makeNewBoard(clues) {
+  // very inefficient...
+  var board = [[0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0]];
+
+  var pos = [];
+  for (var i = 0; i < 9; i++) {
+    for (var j = 0; j< 9; j++) {
+      pos.push([i, j]);
+    }
+  }
+  var count = 0;
+
+  while (count < clues) {
+    [i, j] = pos.splice(random(pos.length), 1)[0];
+    var allowed = allowedNum(i, j, board);
+    if (allowed.length) {
+      board[i][j] = allowed[random(allowed.length)];
+      count++;
+    } else {
+      var flag = 1;
+      break;
+    }
+  }
+
+  if (!flag) {
+    if (solve(board)) {
+      return board;
+    } else {
+      console.log('Failed solve');
+      return makeNewBoard(clues);
+    }
+  } else {
+    console.log('Failed placement');
+    return makeNewBoard(clues);
+  }
+}
+
+function random(n) {
+  // returns an integer in [0,n)
+  return Math.floor(Math.random()*n);
+}
+
 function getCol(y, board) {
   return board.map(x => x[y]);
 }
@@ -112,7 +162,7 @@ var board = [[0,0,0,0,7,0,0,0,0],
 //               [ 3, 4, 5, 2, 8, 6, 0, 7, 9 ] ];
 
 // console.log(unfilled(falsy).map(point => [point, allowedNum(point[0], point[1], falsy)]).sort((a, b) => a[1].length - b[1].length));
-console.log(solve(board));
+// console.log(solve(board));
 
 function checkValid(board) {
   for (var i = 0; i < board.length; i++) {

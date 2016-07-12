@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/new', function(req, res) {
-  res.send(utils.makeNewBoard());
+  res.send(utils.makeNewBoard(30));
 });
 
 
