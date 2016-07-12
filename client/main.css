@@ -1,21 +1,10 @@
-/*.board div:nth-child(3) li:nth-child(3) {
-    font-weight: 800;
-}*/
-
-/*.board {*/
-  /*position: absolute;*/
-  /*left: 150px;*/
-  /*top: 150px;*/
-  /*margin: 0 auto;*/
-/*}*/
-
 div {
   font-family: "Roboto", "Helvetica", "Arial"
 }
 
 h1 {
   font-weight: 300;
-  padding-left: 120px;
+  padding-left: 150px;
   margin: 50;
   display: block;
 }
@@ -36,6 +25,38 @@ h1 {
   position: relative;
 }
 
+#gameBoard div:nth-child(1) li {
+  border-top: 4px solid #464646;
+}
+
+#gameBoard div:nth-child(4) li {
+  border-top: 3px solid #464646;
+}
+
+#gameBoard div:nth-child(6) li {
+  border-bottom: 3px solid #464646;
+}
+
+#gameBoard div:nth-child(9) li {
+  border-bottom: 4px solid #464646;
+}
+
+#gameBoard div li:first-of-type {
+  border-left: 4px solid #464646;
+}
+
+#gameBoard div li:nth-of-type(3) {
+  border-right: 3px solid #464646;
+}
+
+#gameBoard div li:nth-of-type(7) {
+  border-left: 3px solid #464646;
+}
+
+#gameBoard div li:last-of-type {
+  border-right: 4px solid #464646;
+}
+
 .board ul {
   margin: 0;
   padding: 0;
@@ -45,7 +66,7 @@ h1 {
 .board li {
   float: left;
   list-style: none;
-  border: 1px solid;
+  border: 0.2px solid #464646;
   /*border: 1px solid;*/
 }
 
@@ -90,7 +111,7 @@ input:focus {
   display: inline-block;
   font-weight: 200;
   letter-spacing: .5px;
-  margin: 10px 25px 10px 25px;
+  margin: 10px 29px 10px 29px;
 }
 
 .btn-alt {
