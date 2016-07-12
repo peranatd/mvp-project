@@ -129,5 +129,6 @@ input:focus {
 
 .btn:disabled {
   background: #8B8B8B;
+  color: #fff;
   cursor: progress;
 }

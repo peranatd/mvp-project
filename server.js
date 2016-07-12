@@ -6,7 +6,7 @@ var app = express();
 app.use(express.static(__dirname + '/client'));
 
 app.get('/new', function(req, res) {
-  res.send(utils.makeNewBoard(30));
+  res.send(utils.makeNewBoard(29));
 });
 
 var port = process.env.PORT || 4568;
