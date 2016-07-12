@@ -22,7 +22,7 @@ h1 {
 
 .container {
   margin: auto;
-  width: 500px;
+  width: 530px;
   display: block;
 }
 
@@ -45,6 +45,8 @@ h1 {
 .board li {
   float: left;
   list-style: none;
+  border: 1px solid;
+  /*border: 1px solid;*/
 }
 
 .board li input {
@@ -53,10 +55,14 @@ h1 {
   line-height: 30px;
   padding: 10px;
   font-size: 40px;
+  font-weight: 300;
   /*display: block;*/
   text-align: center;
-  border: 1px solid;
   cursor: default;
+}
+
+.board input:disabled {
+  color: gray;
 }
 
 input:focus {
@@ -82,7 +88,7 @@ input:focus {
   color: #226699;
   cursor: pointer;
   display: inline-block;
-  font-weight: 300;
+  font-weight: 200;
   letter-spacing: .5px;
   margin: 10px 25px 10px 25px;
 }
