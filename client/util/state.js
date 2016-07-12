@@ -13,7 +13,7 @@ angular.module('sudoku-state', [])
   var initBoard = function(rawBoard) {
     var cookedBoard = [];
     for (var i = 0; i < rawBoard.length; i++) {
-      newRow = [];
+      var newRow = [];
       for (var j = 0; j < rawBoard.length; j++) {
         newRow.push({
           value: rawBoard[i][j]?rawBoard[i][j]:'',
@@ -21,12 +21,12 @@ angular.module('sudoku-state', [])
           row: i,
           col: j,
           invalid: false
-        })
+        });
       }
       cookedBoard.push(newRow);
     }
     return cookedBoard;
-  }
+  };
 
   var makeRaw = function(cookedBoard) {
     var rawBoard = [];
@@ -39,12 +39,12 @@ angular.module('sudoku-state', [])
       rawBoard.push(row);
     }
     return rawBoard;
-  }
+  };
 
   return {
     initBoard: initBoard,
     makeRaw: makeRaw,
     origBoard: board,
-    board: initBoard(board),
-  }
+    board: initBoard(board)
+  };
 });

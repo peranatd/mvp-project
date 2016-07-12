@@ -1,22 +1,15 @@
-/*
-  sudoku utilities:
-  column checker
-  row checker
-  block checker
-  solver
-
-  sample board input for all functions:
-  0 = empty value
-  var board = [[5,3,0,0,7,0,0,0,0],
+var makeNewBoard = function() {
+  var board = [[0,0,0,0,0,0,0,0,0],
                [6,0,0,1,9,5,0,0,0],
                [0,9,8,0,0,0,0,6,0],
-               [8,0,0,0,6,0,0,0,3],
+               [8,5,0,0,6,0,0,0,3],
                [4,0,0,8,0,3,0,0,1],
                [7,0,0,0,2,0,0,0,6],
                [0,6,0,0,0,0,2,8,0],
                [0,0,0,4,1,9,0,0,5],
                [0,0,0,0,8,0,0,7,9]];
- */
+  return board;
+};
 
 function getCol(y, board) {
   return board.map(x => x[y]);
@@ -63,11 +56,6 @@ function unfilled(board) {
   return result;
 }
 
-// function freePlaces(board, list) {
-//   var sure = list.filter(item => item[1].length === 1);
-//   sure.forEach(item => board[item[0][0]][item[0][1]] = item[1][0]);
-// }
-
 function solve(board) {
   var solution = [];
 
@@ -87,43 +75,10 @@ function solve(board) {
   }
 
   move(board, unfilled(board));
-  return solution.length ? solution.slice(0,9) : false;
+  return solution.length ? solution.slice(0, 9) : false;
 }
 
 
-var board = [[0,0,0,0,7,0,0,0,0],
-             [6,0,0,1,9,5,0,0,0],
-             [0,9,8,0,0,0,0,6,0],
-             [8,0,0,0,6,0,0,0,3],
-             [4,0,0,8,0,3,0,0,1],
-             [7,0,0,0,2,0,0,0,6],
-             [0,6,0,0,0,0,2,8,0],
-             [0,0,0,4,1,9,0,0,5],
-             [0,0,0,0,8,0,0,7,9]];
-
-// var falsy = [ [ 0, 3, 4, 6, 7, 8, 9, 1, 2 ],
-//               [ 6, 7, 2, 1, 9, 5, 3, 4, 8 ],
-//               [ 1, 9, 8, 3, 4, 2, 5, 6, 7 ],
-//               [ 8, 5, 9, 7, 6, 1, 4, 2, 3 ],
-//               [ 4, 2, 0, 8, 6, 3, 7, 9, 1 ],
-//               [ 7, 1, 3, 9, 2, 4, 8, 5, 6 ],
-//               [ 9, 6, 1, 5, 3, 7, 2, 8, 4 ],
-//               [ 2, 8, 7, 4, 1, 9, 6, 3, 5 ],
-//               [ 3, 4, 5, 2, 8, 6, 0, 7, 9 ] ];
-
-// console.log(unfilled(falsy).map(point => [point, allowedNum(point[0], point[1], falsy)]).sort((a, b) => a[1].length - b[1].length));
-console.log(solve(board));
-
-function checkValid(board) {
-  for (var i = 0; i < board.length; i++) {
-    for (var j = 0; j < board.length; j++) {
-      var a = board[i][j];
-      board[i][j] = 0;
-      if (a !== allowedNum(i, j, board)[0]) {
-        return false;
-      }
-      board[i][j] = a;
-    }
-  }
-  return true;
-}
+module.exports = {
+  makeNewBoard: makeNewBoard
+};

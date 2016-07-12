@@ -3,11 +3,11 @@ angular.module('sudoku-logic', [])
 
   var getCol = function(y, board) {
     return board.map(x => x[y]);
-  }
+  };
 
   var getRow = function(x, board) {
     return board[x].slice();
-  }
+  };
 
   var getBlock = function(x, y, board) {
     var block = [];
@@ -24,14 +24,14 @@ angular.module('sudoku-logic', [])
       }
     }
     return block;
-  }
+  };
 
   // returns all numbers allowed in position x, y
   var allowedNum = function(x, y, board) {
     var notAllowed = new Set(getCol(y, board).concat(getRow(x, board)).concat(getBlock(x, y, board)));
     var nums = Array.from({length: 9}, (v, k) => k + 1);
     return nums.filter(num => !notAllowed.has(num));
-  }
+  };
 
   // returns all empty positions on the board
   var unfilled = function(board) {
@@ -44,7 +44,7 @@ angular.module('sudoku-logic', [])
       }
     }
     return result;
-  }
+  };
 
   var invalidPos = function(cell, board) {
     var a = cell.value;
@@ -58,48 +58,48 @@ angular.module('sudoku-logic', [])
       board[i][j] = a;
       return false;
     }
-  }
+  };
 
   var checkValid = function(board) {
-  for (var i = 0; i < board.length; i++) {
-    for (var j = 0; j < board.length; j++) {
-      var a = board[i][j];
-      board[i][j] = 0;
-      if (a !== allowedNum(i, j, board)[0]) {
-        return false;
+    for (var i = 0; i < board.length; i++) {
+      for (var j = 0; j < board.length; j++) {
+        var a = board[i][j];
+        board[i][j] = 0;
+        if (a !== allowedNum(i, j, board)[0]) {
+          return false;
+        }
+        board[i][j] = a;
       }
-      board[i][j] = a;
     }
-  }
-  return true;
-}
+    return true;
+  };
 
-var solve = function(board) {
-  var solution = [];
+  var solve = function(board) {
+    var solution = [];
 
-  function move(board, empty) {
-    if (!empty.length) {
-      board.forEach(row => solution.push(row.slice()));
-      return;
-    } else {
-      var x = empty[0][0];
-      var y = empty[0][1];
-      for (var number of allowedNum(x, y, board)) {
-        board[x][y] = number;
-        move(board, empty.slice(1));
+    function move(board, empty) {
+      if (!empty.length) {
+        board.forEach(row => solution.push(row.slice()));
+        return;
+      } else {
+        var x = empty[0][0];
+        var y = empty[0][1];
+        for (var number of allowedNum(x, y, board)) {
+          board[x][y] = number;
+          move(board, empty.slice(1));
+        }
+        board[x][y] = 0;
       }
-      board[x][y] = 0;
     }
-  }
 
-  move(board, unfilled(board));
-  return solution.length ? solution : false;
-}
+    move(board, unfilled(board));
+    return solution.length ? solution.slice(0, 9) : false;
+  };
 
   return {
     solve: solve,
     checkValid: checkValid,
     allowedNum: allowedNum,
     invalidPos: invalidPos
-  }
+  };
 });

@@ -1,13 +1,16 @@
 var express = require('express');
+var utils = require('./server/utilities.js');
 
 var app = express();
 
-
 app.use(express.static(__dirname + '/client'));
-
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/client/index.html');
+});
+
+app.get('/new', function(req, res) {
+  res.send(utils.makeNewBoard());
 });
 
 
