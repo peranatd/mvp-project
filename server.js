@@ -5,14 +5,9 @@ var app = express();
 
 app.use(express.static(__dirname + '/client'));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/client/index.html');
-});
-
 app.get('/new', function(req, res) {
   res.send(utils.makeNewBoard(30));
 });
-
 
 var port = process.env.PORT || 4568;
 
