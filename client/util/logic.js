@@ -78,17 +78,19 @@ angular.module('sudoku-logic', [])
     var solution = [];
 
     function move(board, empty) {
-      if (!empty.length) {
-        board.forEach(row => solution.push(row.slice()));
-        return;
-      } else {
-        var x = empty[0][0];
-        var y = empty[0][1];
-        for (var number of allowedNum(x, y, board)) {
-          board[x][y] = number;
-          move(board, empty.slice(1));
+      if (!solution.length) {
+        if (!empty.length) {
+          board.forEach(row => solution.push(row.slice()));
+          return;
+        } else {
+          var x = empty[0][0];
+          var y = empty[0][1];
+          for (var number of allowedNum(x, y, board)) {
+            board[x][y] = number;
+            move(board, empty.slice(1));
+          }
+          board[x][y] = 0;
         }
-        board[x][y] = 0;
       }
     }
 
