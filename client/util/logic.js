@@ -47,7 +47,7 @@ angular.module('sudoku-logic', [])
   };
 
   var invalidPos = function(cell, board) {
-    var a = cell.value;
+    var a = cell.value?+cell.value:cell.value;
     var i = cell.row;
     var j = cell.col;
     board[i][j] = 0;
